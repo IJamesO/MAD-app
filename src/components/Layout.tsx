@@ -53,7 +53,7 @@ export default function Layout({ children, activeTab, onTabChange }: {
   const menu = user?.role === 'student' ? STUDENT_MENU : STAFF_MENU;
 
   return (
-    <div className="h-screen bg-bg flex flex-col overflow-hidden max-w-[100vw] safe-top safe-bottom">
+    <div className="h-screen bg-bg flex flex-col overflow-hidden w-full safe-top safe-bottom relative">
       {/* Universal Top App Bar */}
       <div className="bg-surface/80 backdrop-blur-md border-b border-border px-6 h-20 flex items-center justify-between sticky top-0 z-50 shrink-0">
         <div className="flex items-center gap-2 mt-2">
@@ -87,14 +87,14 @@ export default function Layout({ children, activeTab, onTabChange }: {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsSidebarOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm z-[60]"
             />
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 w-[85%] max-w-sm bg-surface z-[70] shadow-2xl flex flex-col"
+              className="absolute inset-y-0 right-0 w-[85%] max-w-sm bg-surface z-[70] shadow-2xl flex flex-col"
             >
               <div className="p-6 border-b border-border flex items-center justify-between pt-12">
                 <h2 className="text-xl font-bold text-text-dark">Profile</h2>
@@ -160,7 +160,7 @@ export default function Layout({ children, activeTab, onTabChange }: {
         </div>
 
         {/* Navigation Bar */}
-        <nav className="fixed bottom-8 left-6 right-6 bg-surface/90 backdrop-blur-2xl border border-border flex items-center justify-around pb-8 pt-4 z-50 rounded-[3rem] shadow-2xl shadow-black/20 ring-1 ring-white/10">
+        <nav className="absolute bottom-8 left-6 right-6 bg-surface/90 backdrop-blur-2xl border border-border flex items-center justify-around pb-8 pt-4 z-50 rounded-[3rem] shadow-2xl shadow-black/20 ring-1 ring-white/10">
           {menu.slice(0, 5).map((item) => (
             <button
               key={item.id}

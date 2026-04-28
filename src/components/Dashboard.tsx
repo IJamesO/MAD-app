@@ -55,7 +55,7 @@ function StudentDashboard({ user }: { user: any }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-md bg-green-600 text-white p-4 rounded-2xl shadow-xl shadow-green-900/20 flex items-center gap-3 border border-green-500"
+            className="absolute top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] bg-green-600 text-white p-4 rounded-2xl shadow-xl shadow-green-900/20 flex items-center gap-3 border border-green-500"
           >
             <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
               <CheckCircle2 size={20} />

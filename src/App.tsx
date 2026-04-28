@@ -44,17 +44,12 @@ function AppContent() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-neutral-900 flex items-center justify-center font-sans overflow-hidden">
-      {/* Simulation Frame for Desktop */}
-      <div className="w-full h-full md:h-[92vh] md:max-w-[430px] md:rounded-[3.5rem] bg-white overflow-hidden shadow-[0_0_0_12px_#1a1a1a,0_0_0_16px_#262626,0_40px_100px_-20px_rgba(0,0,0,0.8)] md:relative flex flex-col transition-all duration-500">
-        {/* Dynamic Island Simulation */}
-        <div className="hidden md:block absolute top-4 left-1/2 -translate-x-1/2 w-36 h-10 bg-black rounded-[2rem] z-[100] border-t border-white/10 shadow-inner" />
-        
-        <div className="flex-1 flex flex-col relative overflow-hidden bg-bg">
-          <AuthProvider>
-            <AppContent />
-          </AuthProvider>
-        </div>
+    <div className="min-h-screen bg-[#FDFDFD] flex justify-center font-sans">
+      {/* Root Application Container constrained to iPhone Pro Max width */}
+      <div className="w-full max-w-[430px] min-h-screen bg-white relative flex flex-col shadow-2xl overflow-hidden shadow-black/5 ring-1 ring-black/5">
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
       </div>
     </div>
   );
