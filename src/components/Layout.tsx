@@ -14,7 +14,9 @@ import {
   X,
   Users,
   BarChart3,
-  UserCircle
+  UserCircle,
+  Tag,
+  Map as MapIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -29,6 +31,8 @@ const STUDENT_MENU: SidebarItem[] = [
   { id: 'profile', label: 'Social', icon: <UserCircle size={20} /> },
   { id: 'courses', label: 'Courses', icon: <BookOpen size={20} /> },
   { id: 'timetable', label: 'Schedule', icon: <Calendar size={20} /> },
+  { id: 'map', label: 'Map', icon: <MapIcon size={20} /> },
+  { id: 'deals', label: 'Deals', icon: <Tag size={20} /> },
   { id: 'grades', label: 'Grades', icon: <GraduationCap size={20} /> },
   { id: 'messages', label: 'Inbox', icon: <MessageSquare size={20} /> },
 ];
@@ -128,6 +132,26 @@ export default function Layout({ children, activeTab, onTabChange }: {
                   <UserCircle size={20} className={activeTab === 'profile' ? 'text-primary' : 'text-gray-400'} />
                   Social Profile
                 </button>
+                <button 
+                  onClick={() => {
+                    onTabChange('map');
+                    setIsSidebarOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-4 p-4 rounded-2xl transition-colors font-semibold ${activeTab === 'map' ? 'bg-primary/10 text-primary' : 'text-text-dark hover:bg-gray-50'}`}
+                >
+                  <MapIcon size={20} className={activeTab === 'map' ? 'text-primary' : 'text-gray-400'} />
+                  Campus Map
+                </button>
+                <button 
+                  onClick={() => {
+                    onTabChange('deals');
+                    setIsSidebarOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-4 p-4 rounded-2xl transition-colors font-semibold ${activeTab === 'deals' ? 'bg-primary/10 text-primary' : 'text-text-dark hover:bg-gray-50'}`}
+                >
+                  <Tag size={20} className={activeTab === 'deals' ? 'text-primary' : 'text-gray-400'} />
+                  Student Deals
+                </button>
                 <button className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50 active:bg-gray-100 transition-colors text-text-dark font-semibold">
                   <Settings size={20} className="text-gray-400" />
                   Settings
@@ -161,7 +185,7 @@ export default function Layout({ children, activeTab, onTabChange }: {
 
         {/* Navigation Bar */}
         <nav className="absolute bottom-8 left-6 right-6 bg-surface/90 backdrop-blur-2xl border border-border flex items-center justify-around pb-8 pt-4 z-50 rounded-[3rem] shadow-2xl shadow-black/20 ring-1 ring-white/10">
-          {menu.slice(0, 5).map((item) => (
+          {menu.slice(0, 6).map((item) => (
             <button
               key={item.id}
               onClick={() => onTabChange(item.id)}

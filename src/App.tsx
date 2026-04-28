@@ -11,6 +11,8 @@ import Settings from './components/Settings';
 import Students from './components/Students';
 import Reports from './components/Reports';
 import SocialProfile from './components/SocialProfile';
+import Deals from './components/Deals';
+import CampusMap from './components/CampusMap';
 
 function AppContent() {
   const { user } = useAuth();
@@ -25,6 +27,8 @@ function AppContent() {
       case 'dashboard': return <Dashboard />;
       case 'courses': return <Courses />;
       case 'timetable': return <Timetable />;
+      case 'map': return <CampusMap />;
+      case 'deals': return <Deals />;
       case 'grades': return <Grades />;
       case 'messages': return <Messages />;
       case 'profile': return <SocialProfile />;
