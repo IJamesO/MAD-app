@@ -71,7 +71,7 @@ export default function Settings() {
 
           <div className="text-center pt-6">
              <div className="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em] mb-2">Socializzy Academic System</div>
-             <div className="text-[10px] font-black text-gray-400">Socializzy by University of Salford • System V4.2</div>
+             <div className="text-[10px] font-black text-gray-400">Socializzy • System V4.2</div>
           </div>
        </div>
     </div>

@@ -57,10 +57,13 @@ export default function Layout({ children, activeTab, onTabChange }: {
       {/* Universal Top App Bar */}
       <div className="bg-surface/80 backdrop-blur-md border-b border-border px-6 h-20 flex items-center justify-between sticky top-0 z-50 shrink-0">
         <div className="flex items-center gap-2 mt-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white shadow-sm">
-            <GraduationCap size={18} />
+          <div className="bg-[#005C5C] p-1.5 rounded-md flex items-center justify-center text-white shadow-sm">
+            <GraduationCap size={16} />
           </div>
-          <span className="font-bold text-primary tracking-tight uppercase text-xs tracking-[0.2em] ml-1">Socializzy</span>
+          <div className="flex flex-col">
+            <span className="font-black text-[#1a1a1a] text-sm leading-tight tracking-tight">Socializzy</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.15em] text-primary">Socializzy Portal</span>
+          </div>
         </div>
         <div className="flex items-center gap-2 mt-2">
           <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-full relative">
