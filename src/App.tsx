@@ -44,8 +44,18 @@ function AppContent() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
+    <div className="min-h-screen bg-black flex items-center justify-center font-sans">
+      {/* Simulation Frame for Desktop */}
+      <div className="w-full h-full md:h-[956px] md:max-w-[440px] md:rounded-[4rem] bg-white overflow-hidden shadow-[0_0_0_12px_#1a1a1a,0_0_0_14px_#333,0_40px_100px_-20px_rgba(0,0,0,0.5)] md:relative flex flex-col">
+        {/* Dynamic Island Simulation */}
+        <div className="hidden md:block absolute top-4 left-1/2 -translate-x-1/2 w-32 h-9 bg-black rounded-full z-[100] border-t border-white/5" />
+        
+        <div className="flex-1 overflow-hidden flex flex-col relative">
+          <AuthProvider>
+            <AppContent />
+          </AuthProvider>
+        </div>
+      </div>
+    </div>
   );
 }

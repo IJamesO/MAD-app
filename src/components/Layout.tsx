@@ -53,23 +53,23 @@ export default function Layout({ children, activeTab, onTabChange }: {
   const menu = user?.role === 'student' ? STUDENT_MENU : STAFF_MENU;
 
   return (
-    <div className="h-screen bg-bg flex flex-col md:flex-row overflow-hidden max-w-[100vw] safe-top safe-bottom">
-      {/* Mobile Top App Bar */}
-      <div className="md:hidden bg-surface/80 backdrop-blur-md border-b border-border px-4 h-16 flex items-center justify-between sticky top-0 z-50">
-        <div className="flex items-center gap-2">
+    <div className="h-screen bg-bg flex flex-col overflow-hidden max-w-[100vw] safe-top safe-bottom">
+      {/* Universal Top App Bar */}
+      <div className="bg-surface/80 backdrop-blur-md border-b border-border px-6 h-20 flex items-center justify-between sticky top-0 z-50 shrink-0">
+        <div className="flex items-center gap-2 mt-2">
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white shadow-sm">
             <GraduationCap size={18} />
           </div>
           <span className="font-bold text-primary tracking-tight uppercase text-xs tracking-[0.2em] ml-1">Socializzy</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mt-2">
           <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-full relative">
             <Bell size={20} />
             <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-surface"></span>
           </button>
           <button onClick={() => setIsSidebarOpen(true)} className="p-2 text-gray-500 hover:bg-gray-100 rounded-full">
-            <div className="w-8 h-8 rounded-full overflow-hidden border border-border">
-              <img src={user?.avatar} alt="" className="w-full h-full object-cover" />
+            <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-primary/20 p-0.5">
+              <img src={user?.avatar} alt="" className="w-full h-full object-cover rounded-full" />
             </div>
           </button>
         </div>
@@ -93,7 +93,7 @@ export default function Layout({ children, activeTab, onTabChange }: {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="fixed inset-y-0 right-0 w-[85%] max-w-sm bg-surface z-[70] shadow-2xl flex flex-col"
             >
-              <div className="p-6 border-b border-border flex items-center justify-between">
+              <div className="p-6 border-b border-border flex items-center justify-between pt-12">
                 <h2 className="text-xl font-bold text-text-dark">Profile</h2>
                 <button onClick={() => setIsSidebarOpen(false)} className="p-2 text-gray-500 hover:bg-gray-100 rounded-full">
                   <X size={24} />
@@ -138,107 +138,40 @@ export default function Layout({ children, activeTab, onTabChange }: {
                   Log Out
                 </button>
               </div>
+              
+              <div className="p-8 border-t border-border mt-auto">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] text-center">Socializzy V4.2 • Salford</p>
+              </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
 
-      {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-surface border-r border-border shrink-0">
-        <div className="h-full flex flex-col p-6">
-          <div className="flex items-center gap-3 mb-10">
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
-              <GraduationCap size={24} />
-            </div>
-            <span className="text-xl font-bold text-primary tracking-tight">Socializzy</span>
-          </div>
-
-          <nav className="flex-1 flex flex-col gap-1.5 overflow-y-auto pr-2 scrollbar-hide">
-            {menu.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => onTabChange(item.id)}
-                className={`
-                  flex items-center gap-3.5 px-4 py-3 rounded-xl font-semibold transition-all group
-                  ${activeTab === item.id 
-                    ? 'bg-primary text-white shadow-lg shadow-primary/20' 
-                    : 'text-gray-500 hover:bg-gray-50 hover:text-primary'}
-                `}
-              >
-                <span className={`transition-transform group-hover:scale-110 ${activeTab === item.id ? 'text-white' : 'text-gray-400 group-hover:text-primary'}`}>
-                  {item.icon}
-                </span>
-                {item.label}
-              </button>
-            ))}
-          </nav>
-
-          <div className="mt-auto pt-6 border-t border-border">
-            <div className="flex items-center gap-3 mb-4 p-2 rounded-xl bg-gray-50 border border-border">
-              <img src={user?.avatar} alt="" className="w-9 h-9 rounded-lg bg-gray-200" />
-              <div className="flex-1 min-w-0">
-                <div className="text-xs font-bold text-text-dark truncate">{user?.name}</div>
-                <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">{user?.role}</div>
-              </div>
-            </div>
-            <button 
-              onClick={logout}
-              className="flex items-center gap-3 px-4 py-3 w-full rounded-xl font-bold text-red-500 hover:bg-red-50 transition-all group text-sm"
-            >
-              <LogOut size={18} />
-              Logout
-            </button>
-          </div>
-        </div>
-      </aside>
-
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col h-screen overflow-hidden relative">
-        {/* Desktop Topbar */}
-        <header className="h-20 bg-surface border-b border-border px-8 hidden md:flex items-center justify-between shrink-0">
-          <h1 className="text-xl font-bold text-text-dark capitalize">
-            {activeTab.replace('-', ' ')}
-          </h1>
-
-          <div className="flex items-center gap-4">
-            <div className="relative group w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors" size={18} />
-              <input 
-                type="text" 
-                placeholder="Search..." 
-                className="w-full bg-gray-50 border border-border rounded-xl pl-10 pr-4 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all"
-              />
-            </div>
-            <button className="w-10 h-10 border border-border rounded-xl flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-primary transition-all relative">
-              <Bell size={20} />
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-surface"></span>
-            </button>
-          </div>
-        </header>
-
         {/* Dynamic Content */}
-        <div className="flex-1 overflow-y-auto p-4 md:p-8 custom-scrollbar">
-          <div className="pb-24 md:pb-0"> {/* Extra padding for mobile bottom nav */}
+        <div className="flex-1 overflow-y-auto p-6 custom-scrollbar scroll-smooth">
+          <div className="pb-32 pt-2"> {/* Extra padding for mobile bottom nav and spacing */}
             {children}
           </div>
         </div>
 
-        {/* Mobile Bottom Navigation */}
-        <nav className="md:hidden fixed bottom-1 left-4 right-4 bg-surface/80 backdrop-blur-xl border border-border flex items-center justify-around pb-6 pt-3 z-50 rounded-[2.5rem] shadow-2xl shadow-black/10">
+        {/* Navigation Bar */}
+        <nav className="fixed bottom-8 left-6 right-6 bg-surface/90 backdrop-blur-2xl border border-border flex items-center justify-around pb-8 pt-4 z-50 rounded-[3rem] shadow-2xl shadow-black/20 ring-1 ring-white/10">
           {menu.slice(0, 5).map((item) => (
             <button
               key={item.id}
               onClick={() => onTabChange(item.id)}
               className="flex flex-col items-center gap-1 flex-1 py-1 relative"
             >
-              <div className={`p-2 rounded-2xl transition-all duration-300 ${
+              <div className={`p-2.5 rounded-2xl transition-all duration-300 ${
                 activeTab === item.id 
-                  ? 'bg-primary text-white scale-110 shadow-lg shadow-primary/20' 
+                  ? 'bg-primary text-white scale-110 shadow-lg shadow-primary/30 -translate-y-1' 
                   : 'text-gray-400 active:scale-95'
               }`}>
-                {React.cloneElement(item.icon as React.ReactElement, { size: 18 })}
+                {React.cloneElement(item.icon as React.ReactElement, { size: 20 })}
               </div>
-              <span className={`text-[9px] font-black uppercase tracking-tighter transition-colors ${
+              <span className={`text-[10px] font-black uppercase tracking-tighter transition-colors ${
                 activeTab === item.id ? 'text-primary' : 'text-gray-400'
               }`}>
                 {item.label}
@@ -246,19 +179,6 @@ export default function Layout({ children, activeTab, onTabChange }: {
             </button>
           ))}
         </nav>
-
-        {/* Security Footer (Desktop Only) */}
-        <footer className="bg-white border-t border-border py-2 px-8 hidden md:flex justify-between items-center shrink-0">
-          <div className="flex items-center gap-2 text-[10px] text-gray-400 uppercase tracking-widest font-bold">
-            <motion.div 
-               animate={{ opacity: [0.5, 1, 0.5] }}
-               transition={{ repeat: Infinity, duration: 2 }}
-               className="w-2 h-2 bg-green-500 rounded-full"
-            />
-            Secure Academic Session • {user?.id}
-          </div>
-          <div className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em]">Socializzy by University of Salford</div>
-        </footer>
       </main>
     </div>
   );
