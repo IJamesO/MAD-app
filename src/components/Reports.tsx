@@ -14,7 +14,7 @@ const DATA = [
 
 export default function Reports() {
   return (
-    <div className="space-y-8 pb-10 max-w-7xl mx-auto">
+    <div className="space-y-8 pb-10">
        <header>
           <h1 className="text-3xl font-extrabold text-text-dark tracking-tight">Academic Reporting</h1>
           <p className="text-gray-500 font-medium">Analyze student performance and course engagement metrics.</p>

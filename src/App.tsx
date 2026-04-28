@@ -44,7 +44,7 @@ function AppContent() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#FDFDFD] flex justify-center font-sans">
+    <div className="min-h-screen bg-[#FDFDFD] flex justify-center font-sans overflow-x-hidden">
       {/* Root Application Container constrained to iPhone Pro Max width */}
       <div className="w-full max-w-[430px] min-h-screen bg-white relative flex flex-col shadow-2xl overflow-hidden shadow-black/5 ring-1 ring-black/5">
         <AuthProvider>

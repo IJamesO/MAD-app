@@ -26,7 +26,7 @@ export default function SocialProfile() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto pb-20">
+    <div className="pb-20">
       {/* Cover Image Placeholder */}
       <div className="h-48 md:h-64 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent rounded-b-[3rem] -mt-6 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0F6A6A_1px,transparent_1px)] [background-size:20px_20px]"></div>

@@ -12,7 +12,7 @@ export default function Timetable() {
   const dayItems = MOCK_TIMETABLE.filter(t => t.day === selectedDay);
 
   return (
-    <div className="space-y-6 pb-24 md:pb-10 max-w-7xl mx-auto">
+    <div className="space-y-6 pb-24 md:pb-10">
       <header className="space-y-4">
         <div>
           <h1 className="text-2xl font-black text-text-dark tracking-tight">Your Schedule</h1>
@@ -128,7 +128,7 @@ export default function Timetable() {
 
       {/* Quick Action FAB (Optional, but looks nice in apps) */}
       <div className="md:hidden">
-        <button className="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl shadow-primary/30 flex items-center justify-center active:scale-95 transition-transform z-40">
+        <button className="absolute bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl shadow-primary/30 flex items-center justify-center active:scale-95 transition-transform z-40">
           <CalendarIcon size={24} />
         </button>
       </div>
