@@ -44,13 +44,13 @@ function AppContent() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center font-sans">
+    <div className="min-h-screen bg-neutral-900 flex items-center justify-center font-sans overflow-hidden">
       {/* Simulation Frame for Desktop */}
-      <div className="w-full h-full md:h-[956px] md:max-w-[440px] md:rounded-[4rem] bg-white overflow-hidden shadow-[0_0_0_12px_#1a1a1a,0_0_0_14px_#333,0_40px_100px_-20px_rgba(0,0,0,0.5)] md:relative flex flex-col">
+      <div className="w-full h-full md:h-[92vh] md:max-w-[430px] md:rounded-[3.5rem] bg-white overflow-hidden shadow-[0_0_0_12px_#1a1a1a,0_0_0_16px_#262626,0_40px_100px_-20px_rgba(0,0,0,0.8)] md:relative flex flex-col transition-all duration-500">
         {/* Dynamic Island Simulation */}
-        <div className="hidden md:block absolute top-4 left-1/2 -translate-x-1/2 w-32 h-9 bg-black rounded-full z-[100] border-t border-white/5" />
+        <div className="hidden md:block absolute top-4 left-1/2 -translate-x-1/2 w-36 h-10 bg-black rounded-[2rem] z-[100] border-t border-white/10 shadow-inner" />
         
-        <div className="flex-1 overflow-hidden flex flex-col relative">
+        <div className="flex-1 flex flex-col relative overflow-hidden bg-bg">
           <AuthProvider>
             <AppContent />
           </AuthProvider>
